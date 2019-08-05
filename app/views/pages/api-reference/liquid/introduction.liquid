@@ -83,10 +83,10 @@ Having a verbose version of code that will:
 ```liquid
 {% raw %}
 {% assign numbers = 'One,Two,Three,Four' %}
-{% assign numbersWithZero = 'One,Two,Three,Four' | prepend: 'Zero,' %}
+{% assign numbersWithZero = numbers | prepend: 'Zero,' %}
 {% assign all_numbers = numbersWithZero | append: ',Five' %}
 {% assign all_numbers_array = all_numbers | split: ',' %}
-{{ all_numbers_array }} => ZeroOneTwoThreeFourFive
+{{ all_numbers_array }} => ["Zero","One","Two","Three","Four","Five"]
 {% endraw %}
 ```
 
@@ -94,7 +94,7 @@ You can achieve the same result in much shorter form by chaining the filters one
 
 ```liquid
 {% raw %}
-{{ 'One,Two,Three,Four' | prepend: 'Zero,' | append: ',Five' | split: ',' }} => ZeroOneTwoThreeFourFive
+{{ 'One,Two,Three,Four' | prepend: 'Zero,' | append: ',Five' | split: ',' }} => ["Zero","One","Two","Three","Four","Five"]
 {% endraw %}
 ```
 
